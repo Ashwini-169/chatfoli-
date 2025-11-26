@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenResume AI Chat Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    #chat { margin-bottom: 1em; }
+    .user { color: #0074d9; }
+    .assistant { color: #2ecc40; }
+    input, button { font-size: 1em; }
+  </style>
+</head>
+<body>
+  <h2>Resume AI Chat Test</h2>
+  <div id="chat"></div>
+  <input id="msg" type="text" placeholder="Type your message..." />
+  <button onclick="sendMsg()">Send</button>
+  <script>
+    let history = [];
+    function sendMsg() {
+      const msg = document.getElementById('msg').value;
+      if (!msg) return;
+      history.push({role: 'user', content: msg});
+      fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({conversationHistory: history, userMessage: msg})
+      })
+      .then(r => r.json())
+      .then(data => {
+        history.push({role: 'assistant', content: data.assistantMessage});
+        document.getElementById('chat').innerHTML += `<div class='user'><b>You:</b> ${msg}</div>`;
+        document.getElementById('chat').innerHTML += `<div class='assistant'><b>AI:</b> ${data.assistantMessage}</div>`;
+        document.getElementById('msg').value = '';
+      });
+    }
+  </script>
+</body>
+</html>

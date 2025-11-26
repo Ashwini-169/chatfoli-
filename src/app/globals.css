@@ -1,0 +1,174 @@
+@import url("/fonts/fonts.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary outline-theme-purple inline-block rounded-full px-6 py-2 font-semibold shadow-sm;
+  }
+  .text-primary {
+    @apply bg-gradient-to-r from-[color:var(--theme-purple)] to-[color:var(--theme-blue)] bg-clip-text text-transparent !important;
+  }
+  .bg-primary {
+    @apply bg-gradient-to-r from-[color:var(--theme-purple)] to-[color:var(--theme-blue)] text-white;
+  }
+  .outline-theme-purple {
+    @apply hover:opacity-80 hover:outline-[color:var(--theme-purple)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--theme-purple)];
+  }
+  .outline-theme-blue {
+    @apply hover:opacity-80 hover:outline-[color:var(--theme-blue)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--theme-blue)];
+  }
+  .within-outline-theme-purple {
+    @apply focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[color:var(--theme-purple)] hover:opacity-80 hover:outline-[color:var(--theme-purple)];
+  }
+
+  /* Theme-aware utilities (use semantic variables instead of opacity) */
+  .text-primary-fg { color: var(--page-text); }
+  .text-secondary-fg { color: var(--muted-text); }
+  .text-tertiary-fg { color: var(--tertiary-text); }
+  .text-placeholder-fg { color: var(--placeholder-text); }
+  .text-link { 
+    color: var(--link-color);
+    transition: color 0.2s;
+  }
+  .text-link:hover { 
+    color: var(--link-hover-color);
+  }
+
+  .bg-card {
+    background-color: var(--card-bg);
+    color: var(--page-text);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 16px var(--shadow-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .bg-card:hover {
+    border-color: var(--theme-blue);
+    box-shadow: 0 6px 20px var(--shadow-color);
+  }
+  .bg-input {
+    background-color: var(--input-bg);
+    color: var(--page-text);
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .bg-input:focus { 
+    border-color: var(--theme-blue);
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
+    outline: none;
+  }
+  .bg-tooltip-bg {
+    background-color: var(--tooltip-bg);
+  }
+
+  .text-tooltip-fg {
+    color: var(--tooltip-fg);
+  }
+
+  .bg-card-hover {
+    background-color: var(--card-hover);
+  }
+}
+
+/* Default (light) theme */
+:root {
+  --theme-purple: #5d52d9;
+  --theme-blue: #4fc5eb;
+  /* Layout constants (keep in sync with globals-css.ts) */
+  --top-nav-bar-height: 3.5rem;
+  --resume-control-bar-height: 3rem;
+  --resume-padding: 1.5rem;
+
+  /* Semantic colors */
+  --page-bg: #f9fafb;         /* body */
+  --card-bg: #ffffff;         /* cards, panels */
+  --input-bg: #ffffff;        /* inputs */
+  --page-text: #111827;       /* primary text */
+  --muted-text: #374151;      /* secondary */
+  --tertiary-text: #6b7280;   /* tertiary */
+  --placeholder-text: #9ca3af;
+  --border-color: #e5e7eb;
+  --link-color: #4f46e5;      /* indigo-600 */
+  --link-hover-color: #4338ca;/* indigo-700 */
+  --selection-bg: #c7d2fe;    /* indigo-200 */
+  --shadow-color: rgba(17, 24, 39, 0.06);
+  --input-focus-ring: rgba(79, 70, 229, 0.15);
+  --border-color: #e5e7eb;
+  --tooltip-bg: #4b5563;
+  --tooltip-fg: #ffffff;
+  --card-hover: #f3f4f6;
+}
+
+/* Theme variants: set CSS variables and basic page background/text for each theme. */
+html[data-theme="dark"] {
+  --theme-purple: #a78bfa;   /* violet-400 */
+  --theme-blue: #22d3ee;     /* cyan-400 */
+  --page-bg: #0f141a;        /* deep slate */
+  --card-bg: #141a21;        /* slightly raised */
+  --input-bg: #1b242f;
+  --page-text: #e6eaf0;      /* near-white */
+  --muted-text: #c6d0da;     /* softer but readable */
+  --tertiary-text: #9db0c2;  /* tertiary */
+  --placeholder-text: #7b8a98;
+  --border-color: #263240;   /* cool border */
+  --link-color: #8cb4ff;     /* soft blue link */
+  --link-hover-color: #b3ccff;
+  --selection-bg: #23435f;   /* blue-900/70 */
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --input-focus-ring: rgba(34, 211, 238, 0.25);
+  --tooltip-bg: #c6d0da;
+  --tooltip-fg: #0f141a;
+  --card-hover: #1b242f;
+}
+
+html[data-theme="dark-sepia"] {
+  --theme-purple: #c28b52;   /* warm accent */
+  --theme-blue: #dba76a;     /* amber-ish secondary */
+  --page-bg: #1d1510;        /* rich coffee */
+  --card-bg: #241a14;        /* slightly raised */
+  --input-bg: #2d211a;
+  --page-text: #f3e3cf;      /* cream */
+  --muted-text: #e0cbb2;
+  --tertiary-text: #c6ad8f;
+  --placeholder-text: #b6987a;
+  --border-color: #3b2a1f;
+  --link-color: #ffd29b;
+  --link-hover-color: #ffe0b9;
+  --selection-bg: #473121;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --input-focus-ring: rgba(219, 167, 106, 0.25);
+  --tooltip-bg: #e0cbb2;
+  --tooltip-fg: #1d1510;
+  --card-hover: #2d211a;
+}
+
+/* Apply page background and text color using variables so themes take effect */
+body {
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Better baseline contrast for anchors and selection */
+a { color: var(--link-color); }
+a:hover { color: var(--link-hover-color); }
+::selection { background: var(--selection-bg); color: var(--page-text); }
+/* Theme-aware card and input backgrounds for high visibility */
+.theme-card {
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(29, 26, 26, 0.08);
+}
+.theme-input {
+  background-color: var(--input-bg);
+  color: var(--page-text);
+  border: 1px solid var(--border-color);
+}
+.theme-btn {
+  background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
+  color: var(--page-text);
+  border-radius: 9999px;
+  font-weight: 600;
+}

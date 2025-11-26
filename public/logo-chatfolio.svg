@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="54" viewBox="0 0 300 54" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">ChatFolio</title>
+  <desc id="logoDesc">ChatFolio logo: chat bubble icon with wordmark</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- chat bubble icon -->
+  <g transform="translate(8,6)" fill="none" fill-rule="evenodd">
+    <rect x="0" y="0" width="44" height="36" rx="10" fill="url(#g1)" />
+    <!-- tail -->
+    <path d="M28 34 L36 44 L26 34" fill="url(#g1)" />
+    <!-- two chat dots -->
+    <circle cx="14" cy="18" r="3.2" fill="#FFFFFF" opacity="0.96" />
+    <circle cx="24" cy="18" r="3.2" fill="#FFFFFF" opacity="0.96" />
+  </g>
+
+  <!-- wordmark -->
+  <text x="68" y="36" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" font-weight="700" font-size="28">
+    <tspan fill="#0F172A">Chat</tspan>
+    <tspan fill="#6366F1" dx="8">Folio</tspan>
+  </text>
+
+</svg>
